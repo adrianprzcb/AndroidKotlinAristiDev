@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.adrian.horoscapp"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.adrian.horoscapp"
