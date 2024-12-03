@@ -3,5 +3,5 @@
     <item
         android:id="@+id/horoscopeFragment"
         android:title="dawd"
-        android:icon=""
+        android:icon="@drawable/ic_horoscope" />
 </menu>
