@@ -6,14 +6,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.navigateUp
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.adrian.horoscapp.R
 import com.adrian.horoscapp.databinding.FragmentHoroscopeBinding
+import com.adrian.horoscapp.domain.model.HoroscopeInfo
+import com.adrian.horoscapp.domain.model.HoroscopeModel
 import com.adrian.horoscapp.ui.horoscope.adapter.HoroscopeAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -40,10 +46,28 @@ class HoroscopeFragment : Fragment() {
     }
 
     private fun initList(){
-        horoscopeAdapter = HoroscopeAdapter()
+        horoscopeAdapter = HoroscopeAdapter(onItemSelected = {
+           val type = when(it){
+                HoroscopeInfo.Aquarius -> HoroscopeModel.Aquarius
+                HoroscopeInfo.Aries -> HoroscopeModel.Aries
+                HoroscopeInfo.Cancer -> HoroscopeModel.Cancer
+                HoroscopeInfo.Capricorn -> HoroscopeModel.Capricorn
+                HoroscopeInfo.Gemini -> HoroscopeModel.Gemini
+                HoroscopeInfo.Leo -> HoroscopeModel.Leo
+                HoroscopeInfo.Libra -> HoroscopeModel.Libra
+                HoroscopeInfo.Pisces -> HoroscopeModel.Pisces
+                HoroscopeInfo.Sagittarius -> HoroscopeModel.Sagittarius
+                HoroscopeInfo.Scorpio -> HoroscopeModel.Scorpio
+                HoroscopeInfo.Taurus -> HoroscopeModel.Taurus
+                HoroscopeInfo.Virgo -> HoroscopeModel.Virgo
+            }
+            findNavController().navigate(
+                HoroscopeFragmentDirections.actionHoroscopeFragmentToHoroscopeDetailActivity(type)
+            )
+        })
 
         binding.rvHoroscope.apply {
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = GridLayoutManager(context, 2)
             adapter = horoscopeAdapter
         }
 
@@ -53,7 +77,7 @@ class HoroscopeFragment : Fragment() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED){
                 horoscopeViewModel.horoscope.collect{
-                    Log.i("aris" , it.toString())
+                    horoscopeAdapter.updateList(it)
                 }
             }
         }
