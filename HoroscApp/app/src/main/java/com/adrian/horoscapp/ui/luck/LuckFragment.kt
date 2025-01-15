@@ -48,9 +48,7 @@ class LuckFragment : Fragment() {
         animator.start()
     }
 
-    private fun slideCard(){
-
-    }
+    private fun slideCard(){ }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
