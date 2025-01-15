@@ -9,6 +9,7 @@
 
 
     <ImageView
+        android:id="@+id/ivRoulette"
         android:layout_width="0dp"
         android:layout_height="400dp"
         android:src="@drawable/ruleta"
