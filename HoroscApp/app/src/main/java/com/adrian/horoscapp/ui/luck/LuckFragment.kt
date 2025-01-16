@@ -38,6 +38,7 @@ class LuckFragment : Fragment() {
         binding.ivRoulette.setOnClickListener{ spinRoulette() }
     }
 
+
     private fun spinRoulette(){
         val random = Random()
         val degrees = random.nextInt(1440) + 360
