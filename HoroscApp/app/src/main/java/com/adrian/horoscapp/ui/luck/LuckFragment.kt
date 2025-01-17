@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.view.animation.DecelerateInterpolator
 import androidx.core.animation.doOnEnd
 import com.adrian.horoscapp.R
@@ -49,7 +50,9 @@ class LuckFragment : Fragment() {
         animator.start()
     }
 
-    private fun slideCard(){ }
+    private fun slideCard(){
+        val slideUpAnimation = AnimationUtils.loadAnimation()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
