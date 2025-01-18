@@ -54,6 +54,7 @@ class LuckFragment : Fragment() {
         val slideUpAnimation = AnimationUtils.loadAnimation()
     }
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
