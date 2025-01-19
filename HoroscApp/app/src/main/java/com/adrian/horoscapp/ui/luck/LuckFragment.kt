@@ -51,7 +51,7 @@ class LuckFragment : Fragment() {
     }
 
     private fun slideCard(){
-        val slideUpAnimation = AnimationUtils.loadAnimation()
+        val slideUpAnimation = AnimationUtils.loadAnimation(requireContext(), )
     }
 
 
