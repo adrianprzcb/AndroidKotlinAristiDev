@@ -72,7 +72,7 @@ class LuckFragment : Fragment() {
     }
 
     private fun growCard(){
-
+        val growAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.grow)
     }
 
 
