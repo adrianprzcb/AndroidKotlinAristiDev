@@ -6,4 +6,6 @@
     android:fromYScale="1.0"
     android:toXScale="3.0"
     android:toYScale="3.0"
+    android:pivotX="50%"
+    android:pivotY="30%"
     />
