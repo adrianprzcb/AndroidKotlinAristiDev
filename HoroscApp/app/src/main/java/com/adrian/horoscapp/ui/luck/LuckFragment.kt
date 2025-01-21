@@ -74,7 +74,20 @@ class LuckFragment : Fragment() {
     private fun growCard(){
         val growAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.grow)
 
-        growAnimation.setAnimationListener(growAnimation)
+        growAnimation.setAnimationListener(object: Animation.AnimationListener{
+            override fun onAnimationStart(p0: Animation?) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onAnimationEnd(p0: Animation?) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onAnimationRepeat(p0: Animation?) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
 
 
