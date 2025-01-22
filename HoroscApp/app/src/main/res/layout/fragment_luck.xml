@@ -58,8 +58,43 @@
         >
         
         <ImageView
-            android:layout_width=""
-            android:layout_height=""
+            android:id="@+id/ivLuckyCard"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            tools:background="@color/red"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.6"
+            />
+
+        <TextView
+            android:id="@+id/tvLucky"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            style="@style/Body"
+            android:layout_margin="32dp"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/ivLuckyCard"
+            tools:text="fgeskFK Oekt eosT OIETEIOSTIO OI"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/tvShare"
+             />
+
+        <TextView
+            android:id="@+id/tvShare"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvLucky"
+            android:gravity="center"
+            style="@style/Body"
+            android:layout_marginBottom="16dp"
+            android:text="@string/share"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
