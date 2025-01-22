@@ -8,27 +8,62 @@
     tools:context=".ui.luck.LuckFragment">
 
 
-    <ImageView
-        android:id="@+id/ivRoulette"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/preview"
+        tools:visibility="gone"
         android:layout_width="0dp"
-        android:layout_height="400dp"
-        android:src="@drawable/ruleta"
-        android:layout_marginBottom="-250dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        >
 
-    <ImageView
-        android:id="@+id/reverse"
+        <ImageView
+            android:id="@+id/ivRoulette"
+            android:layout_width="0dp"
+            android:layout_height="400dp"
+            android:src="@drawable/ruleta"
+            android:layout_marginBottom="-250dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <ImageView
+            android:id="@+id/reverse"
+            android:visibility="invisible"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:scaleType="fitStart"
+            android:src="@drawable/card_back_small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/predicition"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:visibility="invisible"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:scaleType="fitStart"
-        android:src="@drawable/card_back_small"
+        tools:visibility="visible"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        >
+        
+        <ImageView
+            android:layout_width=""
+            android:layout_height=""
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
