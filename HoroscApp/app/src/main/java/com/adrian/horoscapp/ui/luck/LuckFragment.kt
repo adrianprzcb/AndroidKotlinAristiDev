@@ -1,6 +1,7 @@
 package com.adrian.horoscapp.ui.luck
 
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,8 +16,11 @@ import androidx.core.animation.doOnEnd
 import androidx.core.view.isVisible
 import com.adrian.horoscapp.R
 import com.adrian.horoscapp.databinding.FragmentLuckBinding
+import com.adrian.horoscapp.ui.model.LuckyModel
+import com.adrian.horoscapp.ui.providers.RandomCardProvider
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Random
+import javax.inject.Inject
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,13 +34,35 @@ class LuckFragment : Fragment() {
     private val binding get() = _binding!!
 
 
+    @Inject
+    lateinit var randomCardProvider: RandomCardProvider
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initUi()
     }
 
     private fun initUi(){
+        preparePrediction()
         initListeners()
+    }
+
+    private fun preparePrediction() {
+        val luck = randomCardProvider.getLucky()
+        luck?.let {
+            val currentPrediction = getString(luck.text)
+            binding.tvLucky.text = currentPrediction
+            binding.ivLuckyCard.setImageResource(it.image)
+            binding.tvShare.setOnClickListener{ shareResult(currentPrediction)}
+        }
+    }
+
+    private fun shareResult(predicition: String) {
+        val sendIntent: Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, predicition)
+            type = "text/plain"
+        }
     }
 
     private fun initListeners(){
@@ -110,6 +136,7 @@ class LuckFragment : Fragment() {
             }
 
         })
+
 
         binding.preview.startAnimation(disappearAnimation)
         binding.predicition.startAnimation(appearAnimation)
