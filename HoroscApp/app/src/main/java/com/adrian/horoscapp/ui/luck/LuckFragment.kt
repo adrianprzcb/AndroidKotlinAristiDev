@@ -1,6 +1,7 @@
 package com.adrian.horoscapp.ui.luck
 
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -16,6 +17,7 @@ import androidx.core.animation.doOnEnd
 import androidx.core.view.isVisible
 import com.adrian.horoscapp.R
 import com.adrian.horoscapp.databinding.FragmentLuckBinding
+import com.adrian.horoscapp.ui.core.listeners.OnSwipeTouchListener
 import com.adrian.horoscapp.ui.model.LuckyModel
 import com.adrian.horoscapp.ui.providers.RandomCardProvider
 import dagger.hilt.android.AndroidEntryPoint
@@ -63,10 +65,24 @@ class LuckFragment : Fragment() {
             putExtra(Intent.EXTRA_TEXT, predicition)
             type = "text/plain"
         }
+
+        val shareIntent = Intent.createChooser(sendIntent, null)
+        startActivity(shareIntent)
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun initListeners(){
-        binding.ivRoulette.setOnClickListener{ spinRoulette() }
+    //    binding.ivRoulette.setOnClickListener{ spinRoulette() }
+
+        binding.ivRoulette.setOnTouchListener(object: OnSwipeTouchListener(requireContext()){
+            override fun onSwipeRight() {
+                spinRoulette()
+            }
+
+            override fun onSwipeLeft() {
+                spinRoulette()
+            }
+        })
     }
 
 
