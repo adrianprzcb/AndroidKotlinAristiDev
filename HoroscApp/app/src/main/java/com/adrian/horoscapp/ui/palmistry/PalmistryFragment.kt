@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.PermissionChecker
 import com.adrian.horoscapp.R
 import com.adrian.horoscapp.databinding.FragmentPalmistryBinding
@@ -20,14 +22,28 @@ class PalmistryFragment : Fragment() {
     private var _binding: FragmentPalmistryBinding? = null
     private val binding get() = _binding!!
 
+    private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission())
+    {
+        isGranted ->
+        if(isGranted){
+            //startCAmera
+        }else{
+            Toast.makeText(
+                requireContext(),
+                "Acepta los permisos para poder disfrutar de una experiencia mágica.", Toast.LENGTH_LONG).show()
+        }
+    }
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         if(checkCameraPermission()){
 
-        }else{
-
+        }else {
+            requestPermissionLauncher.launch(CAMERA_PERMISSION)
         }
+
     }
 
     private fun checkCameraPermission(): Boolean {
