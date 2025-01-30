@@ -26,7 +26,7 @@ class PalmistryFragment : Fragment() {
     {
         isGranted ->
         if(isGranted){
-            //startCAmera
+            startCamera()
         }else{
             Toast.makeText(
                 requireContext(),
@@ -39,12 +39,16 @@ class PalmistryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if(checkCameraPermission()){
-
+            startCamera()
         }else {
             requestPermissionLauncher.launch(CAMERA_PERMISSION)
 
         }
 
+    }
+
+    private fun startCamera() {
+        TODO("Not yet implemented")
     }
 
     private fun checkCameraPermission(): Boolean {
