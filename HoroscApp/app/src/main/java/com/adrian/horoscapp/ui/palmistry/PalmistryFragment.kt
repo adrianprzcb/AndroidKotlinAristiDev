@@ -42,6 +42,7 @@ class PalmistryFragment : Fragment() {
 
         }else {
             requestPermissionLauncher.launch(CAMERA_PERMISSION)
+
         }
 
     }
