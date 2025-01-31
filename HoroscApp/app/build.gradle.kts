@@ -28,32 +28,32 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-
-            resValue("string" , "arisname" , "HoroscApp")
-            buildConfigField("String" , "BASE_URL", "\"https://newastro.vercel.app/\"")
+            resValue("string", "arisname", "HoroscApp")
+            buildConfigField("String", "BASE_URL", "\"https://newastro.vercel.app/\"")
         }
-        getByName("debug"){
+        getByName("debug") {
             isDebuggable = true
-            resValue("string" , "arisname" , "[DEBUG] HoroscApp")
-
-            buildConfigField("String" , "BASE_URL", "\"https://newastro.vercel.app/\"")
+            resValue("string", "arisname", "[DEBUG] HoroscApp")
+            buildConfigField("String", "BASE_URL", "\"https://newastro.vercel.app/\"")
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     kotlinOptions {
         jvmTarget = "11"
     }
-    buildFeatures{
+
+    buildFeatures {
         viewBinding = true
         buildConfig = true
     }
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -63,28 +63,25 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-
-    //Dagger Hilt
+    // Dagger Hilt
     implementation("com.google.dagger:hilt-android:2.48")
     kapt("com.google.dagger:hilt-compiler:2.48")
 
-    //NavComponent
+    // Navigation Component
     val navVersion = "2.7.1"
-    val cameraVersion = "1.2.3"
-
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
 
-    //Retrofit
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation ("com.squareup.okhttp3:logging-interceptor:4.3.1")
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.3.1")
 
-    //Camera X
-    implementation ("androidx.camera:camera-core:${cameraVersion}")
-    implementation ("androidx.camera:camera-camera2:${cameraVersion}")
-    implementation ("androidx.camera:camera-lifecycle:${cameraVersion}")
-    implementation ("androidx.camera:camera-view:${cameraVersion}")
-    implementation ("androidx.camera:camera-extensions:${cameraVersion}")
-
+    // CameraX
+    val cameraVersion = "1.2.3"
+    implementation("androidx.camera:camera-core:$cameraVersion")
+    implementation("androidx.camera:camera-camera2:$cameraVersion")
+    implementation("androidx.camera:camera-lifecycle:$cameraVersion")
+    implementation("androidx.camera:camera-view:$cameraVersion")
+    implementation("androidx.camera:camera-extensions:$cameraVersion")
 }

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.PermissionChecker
 import com.adrian.horoscapp.R
 import com.adrian.horoscapp.databinding.FragmentPalmistryBinding
@@ -48,7 +49,9 @@ class PalmistryFragment : Fragment() {
     }
 
     private fun startCamera() {
-        TODO("Not yet implemented")
+       val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
+
+
     }
 
     private fun checkCameraPermission(): Boolean {
